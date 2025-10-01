@@ -1,9 +1,11 @@
 
+#![windows_subsystem = "windows"]
 use windows::Win32::System::Power::{
     ES_CONTINUOUS, ES_DISPLAY_REQUIRED, ES_SYSTEM_REQUIRED, SetThreadExecutionState,
 };
 
 use systray::Application;
+
 
 fn main() {
     // Prevent sleep/display off

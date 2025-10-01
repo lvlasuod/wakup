@@ -6,3 +6,19 @@ edition = "2024"
 [dependencies]
 windows = { version = "0.58", features = ["Win32_System_Power"] }
 systray = "0.4"
+
+[package.metadata.winres]
+# Optional if you want to embed icon/version info
+ProductName = "WAKUP"
+FileDescription = "Prevents system sleep and runs from system tray"
+OriginalFilename = "wakup.exe"
+
+[profile.release]
+opt-level = "z"   # small binary
+lto = true
+
+[[bin]]
+name = "wakup"
+path = "src/main.rs"
+# 👇 This makes it run without showing a console
+windows_subsystem = "windows"
