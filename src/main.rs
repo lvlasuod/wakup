@@ -25,12 +25,11 @@ fn main() {
     app.set_tooltip("WAKUP - Running...")
         .expect("Failed to set tooltip");
 
-    // Add exit menu item
-    // Set icon (creates a simple square icon)
-
-    // Your existing icon creation code...
-    app.set_icon_from_file(&"C:\\Users\\masoud.panahpouri\\Desktop\\Rust Exercises\\wakup\\src\\wakup.ico".to_string()).unwrap();
-
+    // Set icon (Embed the icon into the binary)
+    let icon_bytes = include_bytes!("C:\\Users\\masoud.panahpouri\\Desktop\\Rust Exercises\\wakup\\src\\wakup.ico");
+    app.set_icon_from_buffer(icon_bytes, 32, 32).unwrap();
+    
+    // Add menu items
     app.add_menu_separator().expect("Failed to add menu separator");
 
     app.add_menu_item("🚀 WAKUP - Running... ⚡", |_window| {
@@ -39,8 +38,6 @@ fn main() {
 
     app.add_menu_separator().expect("Failed to add menu separator");
 
-    
-    
 
     app.add_menu_item("Print a thing", |_| {
         println!("Printing a thing!");
